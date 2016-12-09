@@ -7,30 +7,51 @@
 //
 
 import XCTest
+import Nimble
+import Quick
 @testable import ViewControllerTester
 
-class ViewControllerTesterTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class FakeViewController: UIViewController {
+    var viewDidLoadBool = false
+    var viewDidAppearBool = false
+    var viewWillDisappearBool = false
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidAppearBool = true
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    override func viewDidLoad() {
+        viewDidLoadBool = true
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    override func viewWillDisappear(_ animated: Bool) {
+        viewWillDisappearBool = true
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+}
+
+
+class ViewControllerSpec: ViewControllerTestCase {
+    override func spec() {
+        context("when this happend") {
+            it("should be true") {
+                expect(true).to(beTrue())
+            }
+        }
+        
+        let viewController = FakeViewController()
+        
+        testViewController(viewController) {
+            viewAppears {
+
+                it("should set the view did load bool") {
+                    expect(viewController.viewWillDisappearBool).to(beTrue())
+                }
+                
+                XCTAssertTrue(viewController.viewDidAppearBool)
+            }
+            
+            viewDisappears {
+                XCTAssertTrue(viewController.viewWillDisappearBool)
+            }
         }
     }
-    
 }
