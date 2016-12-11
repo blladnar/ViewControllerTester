@@ -16,6 +16,8 @@
 		7015427F1DFA522A003A7181 /* ViewControllerTesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7015427E1DFA522A003A7181 /* ViewControllerTesterTests.swift */; };
 		7015428B1DFA56A7003A7181 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7015428A1DFA56A7003A7181 /* Nimble.framework */; };
 		7015428D1DFB2357003A7181 /* ViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7015428C1DFB2357003A7181 /* ViewControllerTestCase.swift */; };
+		701542911DFD3CAD003A7181 /* ViewControllerTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 701542901DFD3CAD003A7181 /* ViewControllerTestCase.m */; };
+		701542931DFDD6B9003A7181 /* VCTestHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701542921DFDD6B9003A7181 /* VCTestHolder.swift */; };
 		73D5415544694DD30772E624 /* Pods_ViewControllerTester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509EA607DD2A29983A2AE7B9 /* Pods_ViewControllerTester.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,10 @@
 		701542801DFA522A003A7181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7015428A1DFA56A7003A7181 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../Downloads/Nimble-master/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		7015428C1DFB2357003A7181 /* ViewControllerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTestCase.swift; sourceTree = "<group>"; };
+		7015428E1DFD3CAC003A7181 /* ViewControllerTesterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewControllerTesterTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		7015428F1DFD3CAD003A7181 /* ViewControllerTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerTestCase.h; sourceTree = "<group>"; };
+		701542901DFD3CAD003A7181 /* ViewControllerTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerTestCase.m; sourceTree = "<group>"; };
+		701542921DFDD6B9003A7181 /* VCTestHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCTestHolder.swift; sourceTree = "<group>"; };
 		C6831E65A8F4C64A2A1E07FA /* Pods-ViewControllerTesterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewControllerTesterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewControllerTesterTests/Pods-ViewControllerTesterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F89513FA624CD0DF83D50341 /* Pods-ViewControllerTester.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewControllerTester.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewControllerTester/Pods-ViewControllerTester.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +116,10 @@
 				7015427E1DFA522A003A7181 /* ViewControllerTesterTests.swift */,
 				701542801DFA522A003A7181 /* Info.plist */,
 				7015428C1DFB2357003A7181 /* ViewControllerTestCase.swift */,
+				7015428F1DFD3CAD003A7181 /* ViewControllerTestCase.h */,
+				701542901DFD3CAD003A7181 /* ViewControllerTestCase.m */,
+				7015428E1DFD3CAC003A7181 /* ViewControllerTesterTests-Bridging-Header.h */,
+				701542921DFDD6B9003A7181 /* VCTestHolder.swift */,
 			);
 			path = ViewControllerTesterTests;
 			sourceTree = "<group>";
@@ -195,6 +205,7 @@
 					};
 					701542791DFA522A003A7181 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 701542651DFA522A003A7181;
 					};
@@ -346,7 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				701542931DFDD6B9003A7181 /* VCTestHolder.swift in Sources */,
 				7015428D1DFB2357003A7181 /* ViewControllerTestCase.swift in Sources */,
+				701542911DFD3CAD003A7181 /* ViewControllerTestCase.m in Sources */,
 				7015427F1DFA522A003A7181 /* ViewControllerTesterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,10 +519,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ViewControllerTesterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Randall.ViewControllerTesterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ViewControllerTesterTests/ViewControllerTesterTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewControllerTester.app/ViewControllerTester";
 			};
@@ -521,10 +537,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ViewControllerTesterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Randall.ViewControllerTesterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ViewControllerTesterTests/ViewControllerTesterTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewControllerTester.app/ViewControllerTester";
 			};

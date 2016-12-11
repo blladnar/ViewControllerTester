@@ -10,5 +10,6 @@ end
 target 'ViewControllerTesterTests' do
     pod 'Nimble'
     pod 'Quick'
+    pod 'KIF'
 end
 
